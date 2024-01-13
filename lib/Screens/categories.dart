@@ -7,10 +7,9 @@ import 'package:meals/Widgets/category_grid_item.dart';
 
 class Categories extends StatelessWidget {
   const Categories(
-      {super.key, required this.setFavouriteState, required this.label});
+      {super.key, required this.setFavouriteState});
 
   final void Function(Meal meal) setFavouriteState;
-  final String label;
   void _selectCategory(BuildContext context, Category category) {
     final List<Meal> meals = [];
     for (final meal in dummyMeals) {
@@ -32,30 +31,25 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(label),
-      ),
-      body: GridView(
-        padding: const EdgeInsets.all(24),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 3 / 2,
-            crossAxisSpacing: 20,
-            mainAxisSpacing: 20),
-        children: [
-          ...availableCategories.map(
-            (category) {
-              return CategoryGridItem(
-                category: category,
-                onSelectCategory: () {
-                  _selectCategory(context, category);
-                },
-              );
-            },
-          ),
-        ],
-      ),
+    return GridView(
+      padding: const EdgeInsets.all(24),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20),
+      children: [
+        ...availableCategories.map(
+              (category) {
+            return CategoryGridItem(
+              category: category,
+              onSelectCategory: () {
+                _selectCategory(context, category);
+              },
+            );
+          },
+        ),
+      ],
     );
   }
 }

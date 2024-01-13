@@ -16,16 +16,26 @@ class _TabsScreenState extends State<TabsScreen> {
   int _setPageIndex = 0;
   final List<Meal> _favourites = [];
 
+  void _showMsg(String message) {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+      ),
+    );
+  }
+
   void _toggleFavouriteMealState(Meal meal) {
     final isExisting = _favourites.contains(meal);
     if (isExisting) {
       setState(() {
         _favourites.remove(meal);
+        _showMsg("Meal removed from Favourites");
       });
-
     } else {
       setState(() {
         _favourites.add(meal);
+        _showMsg("Meal added to Favourites");
       });
     }
   }
@@ -38,15 +48,20 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Widget active = Categories(setFavouriteState: _toggleFavouriteMealState,label:'Categories');
+    String label = "Categories";
+    Widget active = Categories(
+        setFavouriteState: _toggleFavouriteMealState);
     if (_setPageIndex == 1) {
+      label = "Favourites";
       active = Meals(
-        title: 'Favourites',
         meals: _favourites,
         setFavouriteState: _toggleFavouriteMealState,
       );
     }
     return Scaffold(
+      appBar: AppBar(
+        title: Text(label),
+      ),
       body: active,
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
