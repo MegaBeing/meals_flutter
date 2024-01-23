@@ -7,12 +7,12 @@ import 'package:meals/Widgets/category_grid_item.dart';
 
 class Categories extends StatelessWidget {
   const Categories(
-      {super.key, required this.setFavouriteState});
-
+      {super.key, required this.setFavouriteState,required this.filteredList});
+  final List<Meal> filteredList;
   final void Function(Meal meal) setFavouriteState;
   void _selectCategory(BuildContext context, Category category) {
     final List<Meal> meals = [];
-    for (final meal in dummyMeals) {
+    for (final meal in filteredList) {
       if (meal.categories.contains(category.id)) {
         meals.add(meal);
       }
