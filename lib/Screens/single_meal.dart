@@ -12,6 +12,8 @@ class SingleMeal extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // TODO: implement build
+    final favouriteMeal = ref.watch(favouriteMealProvider);
+    final isFavourite = favouriteMeal.contains(singleMeal);
     return Scaffold(
       appBar: AppBar(
         title: Text(singleMeal.title.toString()),
@@ -35,7 +37,7 @@ class SingleMeal extends ConsumerWidget {
                   ),
                 );
               },
-              icon: const Icon(Icons.star))
+              icon: Icon(isFavourite ? Icons.star : Icons.star_border))
         ],
       ),
       body: SingleMealItem(
