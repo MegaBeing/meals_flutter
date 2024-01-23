@@ -4,15 +4,17 @@ import 'package:meals/Widgets/meal_list_item.dart';
 import '../Models/meal.dart';
 
 class Meals extends StatelessWidget {
-  const Meals({super.key, this.title, required this.meals,required this.setFavouriteState});
+  const Meals({super.key, this.title, required this.meals});
 
   final String? title;
   final List<Meal> meals;
-  final void Function(Meal meal) setFavouriteState;
+
   void _singleMeal(BuildContext context, Meal singleMeal) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) => SingleMeal(singleMeal: singleMeal,setFavouriteState: setFavouriteState,),
+        builder: (ctx) => SingleMeal(
+          singleMeal: singleMeal,
+        ),
       ),
     );
   }
@@ -39,7 +41,7 @@ class Meals extends StatelessWidget {
         ),
       );
     }
-    if(title == null) {
+    if (title == null) {
       return body;
     }
     return Scaffold(

@@ -6,10 +6,10 @@ import 'package:meals/Screens/meals.dart';
 import 'package:meals/Widgets/category_grid_item.dart';
 
 class Categories extends StatelessWidget {
-  const Categories(
-      {super.key, required this.setFavouriteState,required this.filteredList});
+  const Categories({super.key, required this.filteredList});
+
   final List<Meal> filteredList;
-  final void Function(Meal meal) setFavouriteState;
+
   void _selectCategory(BuildContext context, Category category) {
     final List<Meal> meals = [];
     for (final meal in filteredList) {
@@ -22,7 +22,6 @@ class Categories extends StatelessWidget {
         builder: (ctx) => Meals(
           title: category.title,
           meals: meals,
-          setFavouriteState: setFavouriteState,
         ),
       ),
     );
@@ -40,7 +39,7 @@ class Categories extends StatelessWidget {
           mainAxisSpacing: 20),
       children: [
         ...availableCategories.map(
-              (category) {
+          (category) {
             return CategoryGridItem(
               category: category,
               onSelectCategory: () {
