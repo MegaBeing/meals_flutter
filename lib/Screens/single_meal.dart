@@ -14,7 +14,7 @@ class SingleMeal extends StatelessWidget {
       appBar: AppBar(
         title: Text(singleMeal.title.toString()),
       actions: [
-        IconButton(onPressed: (){setFavouriteState(singleMeal);}, icon: Icon(Icons.star))
+        IconButton(onPressed: (){setFavouriteState(singleMeal);}, icon: const Icon(Icons.star))
       ],),
       body: SingleMealItem(
         singleMeal: singleMeal,

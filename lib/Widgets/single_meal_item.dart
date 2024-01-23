@@ -3,7 +3,7 @@ import 'package:meals/Models/meal.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class SingleMealItem extends StatelessWidget {
-  SingleMealItem({super.key, required this.singleMeal});
+  const SingleMealItem({super.key, required this.singleMeal});
 
   final Meal singleMeal;
 
@@ -56,7 +56,7 @@ class SingleMealItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 10),
               child: Text(
-                '\u2022 '+text,
+                '\u2022 $text',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   color: Theme.of(context).colorScheme.onBackground,

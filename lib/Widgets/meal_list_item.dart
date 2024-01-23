@@ -39,7 +39,7 @@ class MealListItem extends StatelessWidget {
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 6, horizontal: 44),
-                color: Color(0xdc000000),
+                color: const Color(0xdc000000),
                 child: Column(
                   children: [
                     Text(meal.title,
@@ -71,7 +71,7 @@ class MealListItem extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(
-                                width: 15,
+                                width: 10,
                               ),
                               const Icon(Icons.work),
                               const SizedBox(
@@ -85,7 +85,7 @@ class MealListItem extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(
-                                width: 15,
+                                width: 10,
                               ),
                               const Icon(Icons.attach_money),
                               const SizedBox(
